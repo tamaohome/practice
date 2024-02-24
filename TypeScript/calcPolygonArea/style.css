@@ -1,0 +1,74 @@
+* {
+  font-family: "BIZ UDゴシック", monospace;
+}
+
+body {
+  margin: 0;
+  color: #353c4e;
+  background-color: #f5f5f5;
+  font-size: 120%;
+}
+
+h1 {
+  margin: 0 0 0.2em;
+  padding: 0.6em;
+  color: #f5f5f5;
+  background-color: #353c4e;
+  font-size: 150%;
+  font-weight: normal;
+}
+
+div.input-item input[type="text"] {
+  width: 10em;
+  padding: 0.25em;
+  border: 1px solid #9ea3ad;
+  font-size: 100%;
+  text-align: right;
+}
+div.select-digits {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+div.select-digits-items {
+  font-size: 100%;
+}
+
+div.input-item input[readonly] {
+  background-color: #f5f5f5;
+}
+
+div.wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5em;
+  padding: 1em;
+  background-color: #f5f5f5;
+  color: #353c4e;
+}
+
+div#inputForm {
+  width: auto;
+}
+
+div.input-item {
+  margin: 0.5em 0;
+}
+
+div.input-item label {
+  display: inline-block;
+  width: 8em;
+}
+
+div.input-item label .symbol {
+  margin-left: 0.5em;
+}
+
+div,
+li {
+  line-height: 1.5em;
+}

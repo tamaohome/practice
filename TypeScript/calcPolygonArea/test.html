@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>test</title>
+  <script type="module" src="dist/app.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- <canvas id="drawPolygon" style="background:whitesmoke; width:400px; height: 400px; margin: 1em;"></canvas> -->
+  <svg id="drawPolygon" width="400" height="400"></svg>
+</body>
+<script>
+  const ORIGIN_X = 200;
+  const ORIGIN_Y = 200;
+  const CIRCUM_R = 150;
+  const IN_R = 80;
+
+  const num = 12;
+  const radians = Array.from({ length: num }, (_, i) => (i / num) * Math.PI * 2);
+  const pointArray = radians.map(
+    rad => [CIRCUM_R * Math.cos(rad - Math.PI/2), CIRCUM_R * Math.sin(rad - Math.PI/2)]
+  );
+  const points = pointArray.map(
+    point => `${ORIGIN_X + point[0]} ${ORIGIN_Y + point[1]}`
+    // point => `${point[0]} ${point[1]}`
+  ).join(", ");
+
+  const svg = document.querySelector("#drawPolygon");
+  svg.setAttribute('style', 'background-color: whitesmoke;');
+
+  // 多角形を描画
+  const polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+  polygon.setAttribute("points", points);
+  polygon.setAttribute("stroke", "#353c4e");
+  polygon.setAttribute("fill", "white");
+  svg.appendChild(polygon);
+  
+  // 外接円を描画
+  const circumCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+  circumCircle.setAttribute("cx", ORIGIN_X);
+  circumCircle.setAttribute("cy", ORIGIN_Y);
+  circumCircle.setAttribute("r",  CIRCUM_R);
+  circumCircle.setAttribute("stroke", "#353c4e");
+  circumCircle.setAttribute("fill", "none");
+  svg.appendChild(circumCircle);
+  
+  // 内接円を描画
+  const inCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+  inCircle.setAttribute("cx", ORIGIN_X);
+  inCircle.setAttribute("cy", ORIGIN_Y);
+  inCircle.setAttribute("r",  IN_R);
+  inCircle.setAttribute("stroke", "#353c4e");
+  inCircle.setAttribute("fill", "none");
+  svg.appendChild(inCircle);
+  
+</script>
+</html>
