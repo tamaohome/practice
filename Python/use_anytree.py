@@ -39,9 +39,7 @@ def line_depth(line):
         return -1
 
 
-def set_tree(data) -> Node:
-    lines = data.split("\n")
-
+def set_tree(lines: list[str]) -> Node:
     root = Node("root")
     parent = root
 
@@ -68,12 +66,13 @@ def set_tree(data) -> Node:
 
 
 def display_tree(root):
-    for pre, fill, node in RenderTree(root):
+    for pre, _, node in RenderTree(root):
         print("%s%s" % (pre, node.name))
 
 
 if __name__ == "__main__":
-    root = set_tree(data)
+    lines = [line.strip("\n") for line in data.split("\n")]
+    root = set_tree(lines)
     display_tree(root)
 
 
